@@ -115,6 +115,7 @@ jobs:
 
 
       - name: Run Snyk Monitor on all projects
+        uses: snyk/actions/golang@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
