@@ -1,4 +1,4 @@
-module github.com/snyk-fixtures/go-modules-with-vulns
+module go-goof
 
 go 1.12
 
