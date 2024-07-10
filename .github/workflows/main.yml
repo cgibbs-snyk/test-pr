@@ -35,7 +35,7 @@ jobs:
             exit_code=0
             snyk_test_json=''
             formatted_json=''
-            args=("$*")
+            args=("--exclude=3")
             
             run_snyk_delta () {
                 # add in any other arguments you would like to use
@@ -43,7 +43,7 @@ jobs:
             }
             
             run_snyk_test () {
-                echo "Running: snyk test --exclude=3 --all-projects --json" $args
+                echo "Running: snyk test --all-projects --json" $args
                 local snyk_exit_code=0
                 {
             
@@ -114,12 +114,6 @@ jobs:
         continue-on-error: true
 
 
-      - name: Upload result to GitHub Code Scanning
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: snyk.sarif
-
-          
 
 env:
   SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
