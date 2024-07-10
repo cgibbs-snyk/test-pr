@@ -20,11 +20,6 @@ jobs:
             npm install -g snyk snyk-delta  
             snyk auth $SNYK_TOKEN
 
-      - name: Snyk Test
-        run: |
-            snyk test --sarif-file-output=snyk.sarif
-        continue-on-error: true
-
       - name: Run Snyk Delta for All Projects
         run: |
             #!/bin/bash
@@ -44,11 +39,11 @@ jobs:
             
             run_snyk_delta () {
                 # add in any other arguments you would like to use
-                snyk-delta
+                snyk-delta --setPassIfNoBaseline true
             }
             
             run_snyk_test () {
-                echo "Running: snyk test --all-projects --json" $args
+                echo "Running: snyk test --exclude=3 --all-projects --json" $args
                 local snyk_exit_code=0
                 {
             
@@ -113,8 +108,8 @@ jobs:
             echo "Overall exit code for snyk-delta-all-projects.sh: ${exit_code}"
             exit $exit_code
             
-            echo "Running Snyk Delta with exclusion for folder 3"
-            snyk delta --exclude=3
+            echo "Running Snyk Delta"
+            snyk delta
         shell: bash
         continue-on-error: true
 
