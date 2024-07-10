@@ -114,6 +114,13 @@ jobs:
         continue-on-error: true
 
 
+      - name: Run Snyk Monitor on all projects
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          command: monitor
+          args: --all-projects --exclude=3
+
 
 env:
   SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
