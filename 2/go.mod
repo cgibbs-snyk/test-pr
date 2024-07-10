@@ -6,4 +6,5 @@ require (
 	github.com/gin-gonic/gin v1.7.7
 	github.com/snapcore/snapd v0.0.0-20220414094232-5abb3aab6b74
 	rsc.io/quote v1.5.2
+	github.com/hashicorp/consul v1.4.0
 )
