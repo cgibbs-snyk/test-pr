@@ -120,7 +120,7 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
           command: monitor
-          args: --all-projects --exclude=3
+          args: --all-projects --org=14860192-e231-4877-96fd-681085ec7bb3 --exclude=3
 
 
 env:
