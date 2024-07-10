@@ -1,7 +1,6 @@
 name: Snyk Delta All Projects
 
-permissions:
-  actions: read
+
 
 on:
   workflow_dispatch:
@@ -10,7 +9,10 @@ on:
     branches: main
 
 jobs:
+
   snyk-delta:
+    permissions:
+        actions: read    
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
