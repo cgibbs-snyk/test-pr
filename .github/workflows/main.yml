@@ -16,10 +16,12 @@ jobs:
         run: |
             npm install -g snyk snyk-delta  
             snyk auth $SNYK_TOKEN
-            
+
       - name: Snyk Test
         run: |
             snyk test
+        args: --sarif-file-output=snyk.sarif
+        continue-on-error: true
 
       - name: Run Snyk Delta for All Projects
         run: |
@@ -113,6 +115,14 @@ jobs:
             snyk delta --exclude=3
         shell: bash
         continue-on-error: true
+
+
+      - name: Upload result to GitHub Code Scanning
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: snyk.sarif
+
+          
 
 env:
   SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
