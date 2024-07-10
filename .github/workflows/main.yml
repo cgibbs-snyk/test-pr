@@ -19,8 +19,7 @@ jobs:
 
       - name: Snyk Test
         run: |
-            snyk test
-        args: --sarif-file-output=snyk.sarif
+            snyk test --sarif-file-output=snyk.sarif
         continue-on-error: true
 
       - name: Run Snyk Delta for All Projects
